@@ -1,0 +1,34 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+   
+public function up(): void
+{
+    Schema::create('konten_halamans', function (Blueprint $table) {
+        $table->id();
+        $table->string('halaman');
+        $table->string('kunci');
+        $table->text('isi')->nullable();
+        $table->string('gambar')->nullable();
+        $table->timestamps();
+
+        $table->unique(['halaman', 'kunci']);
+    });
+}
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('konten_halamen');
+    }
+};
